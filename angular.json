@@ -3,5 +3,37 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ng-osmo-lib": {
+      "projectType": "library",
+      "root": "components",
+      "sourceRoot": "components",
+      "prefix": "ngo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "components/src/test.ts",
+            "tsConfig": "components/tsconfig.spec.json",
+            "karmaConfig": "components/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-osmo-lib"
 }
