@@ -4,7 +4,9 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
-      "ng-osmo/*": ["./*"]
+      "ng-osmo/*": [
+        "./*"
+      ]
     }
   },
   "include": [
