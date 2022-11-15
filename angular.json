@@ -33,7 +33,132 @@
           }
         }
       }
+    },
+    "ng-osmo-doc": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "website",
+      "sourceRoot": "website/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/website",
+            "index": "website/src/index.html",
+            "main": "website/src/main.ts",
+            "polyfills": "website/src/polyfills.ts",
+            "tsConfig": "website/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "website/src/favicon.ico",
+              "website/src/assets"
+            ],
+            "styles": [
+              "website/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "website/src/environments/environment.ts",
+                  "with": "website/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "ng-osmo-doc:build:production"
+            },
+            "development": {
+              "browserTarget": "ng-osmo-doc:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ng-osmo-doc:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "website/src/test.ts",
+            "polyfills": "website/src/polyfills.ts",
+            "tsConfig": "website/tsconfig.spec.json",
+            "karmaConfig": "website/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "website/src/favicon.ico",
+              "website/src/assets"
+            ],
+            "styles": [
+              "website/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
     }
   },
-  "defaultProject": "ng-osmo-lib"
+  "defaultProject": "ng-osmo-doc"
 }
