@@ -32,6 +32,7 @@
     "@types/node": "^12.11.1",
     "chalk": "^4.1.2",
     "gulp": "^4.0.2",
+    "gulp-run": "^1.7.1",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
