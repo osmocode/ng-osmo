@@ -2,22 +2,14 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "outDir": "../out-tsc/app",
-    "paths": {
-      "ng-osmo": [
-        "../publish"
-      ],
-      "ng-osmo/*": [
-        "../publish/*"
-      ]
-    },
+    "types": [],
   },
   "files": [
     "src/main.ts",
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.d.ts",
+    "src/**/*.d.ts"
   ]
 }
