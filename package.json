@@ -3,11 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npx gulp start:dev",
     "build": "npx gulp build:lib && npx gulp build:scss",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "build:lib": "npx gulp build:lib"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
