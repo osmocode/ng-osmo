@@ -5,9 +5,10 @@
     "baseUrl": "./",
     "outDir": "../release",
     "declaration": true,
-    "declarationMap": true,
+    "declarationMap": false,
     "inlineSources": true,
-    "types": []
+    "inlineSourceMap": true,
+    "types": [],
   },
   "include": [
     "**/*.ts"
