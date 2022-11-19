@@ -1,3 +1,57 @@
-.ngo-layout {
-  color: red;
+
+$ngo-prefix: 'ngo';
+
+$layout-prefix-cls: '#{$ngo-prefix}-layout';
+
+.#{$layout-prefix-cls} {
+  display: flex;
+  flex: 1 1 0%;
+
+  &-top-container {
+    display: flex;
+    flex: 1 1 0%;
+  }
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+
+    &-last {
+      flex: 1 1 0%;
+    }
+
+    &-vertical {
+      width: 33%;
+      flex-direction: row;
+    }
+
+    &-horizontal {
+      height: 33%;
+      flex-direction: column;
+    }
+
+  }
+
+  &-content {
+    display: flex;
+    flex: 1 1 0%;
+  }
+
+  &-resizer {
+    background-color: #cbd5e0;
+
+    &-vertical {
+      cursor: col-resize;
+      height: 100%;
+      width: 2px;
+    }
+
+    &-horizontal {
+      cursor: row-resize;
+      height: 2px;
+      width: 100%;
+    }
+
+  }
+
 }

@@ -2,3 +2,9 @@
 
 // @import '../../components/ng-osmo.dark.scss';
 @import '../../components/ng-osmo.scss';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
