@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, Output, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, EventEmitter, HostListener, Input, Output, ViewEncapsulation } from "@angular/core";
 import { fromEvent } from "rxjs";
+import { NgoLayoutDirection } from "./layout.types";
 
 
 @Component({
   selector: 'ngo-layout-resizer',
   exportAs: 'ngoLayoutResizer',
-  template: ``,
+  template: '',
   host: {
     class: 'ngo-layout-resizer',
     '[class.ngo-layout-resizer-vertical]': 'direction === "vertical"',
@@ -16,10 +17,13 @@ import { fromEvent } from "rxjs";
 })
 export class NgoLayoutResizerComponent {
 
-  @Input() direction!: 'vertical' | 'horizontal';
+  @Input() direction!: NgoLayoutDirection;
   @Output() didChangeWidth = new EventEmitter<number>();
   @Output() didChangeHeight = new EventEmitter<number>();
   @Output() didChangeFinish = new EventEmitter<void>();
+
+  private clientX: number = 0;
+  private clientY: number = 0;
 
   @HostListener('mousedown', ['$event'])
   mouseDown(event: MouseEvent) {
@@ -36,9 +40,6 @@ export class NgoLayoutResizerComponent {
       this.didChangeFinish.emit();
     });
   }
-
-  private clientX: number = 0;
-  private clientY: number = 0;
 
   private mouseMoveHandler(event: MouseEvent) {
     if (this.direction === 'vertical') {

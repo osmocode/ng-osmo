@@ -5,36 +5,13 @@ $layout-prefix-cls: '#{$ngo-prefix}-layout';
 
 .#{$layout-prefix-cls} {
   display: flex;
-  flex: 1 1 0%;
 
-  &-top-container {
-    display: flex;
-    flex: 1 1 0%;
+  &-vertical {
+    flex-direction: row;
   }
 
-  &-container {
-    display: flex;
-    justify-content: space-between;
-
-    &-last {
-      flex: 1 1 0%;
-    }
-
-    &-vertical {
-      width: 33%;
-      flex-direction: row;
-    }
-
-    &-horizontal {
-      height: 33%;
-      flex-direction: column;
-    }
-
-  }
-
-  &-content {
-    display: flex;
-    flex: 1 1 0%;
+  &-horizontal {
+    flex-direction: column;
   }
 
   &-resizer {
@@ -51,7 +28,5 @@ $layout-prefix-cls: '#{$ngo-prefix}-layout';
       height: 2px;
       width: 100%;
     }
-
   }
-
 }
