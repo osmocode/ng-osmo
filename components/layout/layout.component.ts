@@ -11,6 +11,7 @@ import { NgoLayoutDirection } from "./layout.types";
   `,
   host: {
     class: 'ngo-layout',
+    '[class.ngo-layout-container]': 'direction === undefined',
     '[class.ngo-layout-vertical]': 'direction === "vertical"',
     '[class.ngo-layout-horizontal]': 'direction === "horizontal"'
   },

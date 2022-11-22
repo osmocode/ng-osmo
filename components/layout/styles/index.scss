@@ -5,6 +5,7 @@ $layout-prefix-cls: '#{$ngo-prefix}-layout';
 
 .#{$layout-prefix-cls} {
   display: flex;
+  background-color: #ffffff;
 
   &-vertical {
     flex-direction: row;
@@ -14,19 +15,34 @@ $layout-prefix-cls: '#{$ngo-prefix}-layout';
     flex-direction: column;
   }
 
+  &-container {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #ececec;
+  }
+
   &-resizer {
-    background-color: #cbd5e0;
+    transition: background-color .1s ease-out;
+
+    &:hover {
+      background-color: #1890ff;
+      transition-delay: .2s;
+    }
 
     &-vertical {
       cursor: col-resize;
       height: 100%;
-      width: 2px;
+      width: 7px;
     }
 
     &-horizontal {
       cursor: row-resize;
-      height: 2px;
+      height: 7px;
       width: 100%;
     }
   }
+
+
 }
