@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, ContentChildren, ElementRef, EventEmitter, HostBinding, Input, QueryList, ViewContainerRef, ViewEncapsulation } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, ContentChildren, ElementRef, EventEmitter, HostBinding, Input, Output, QueryList, ViewChild, ViewContainerRef, ViewEncapsulation } from "@angular/core";
 import { NgoLayoutResizerComponent } from "./layout-resizer.component";
 import { NgoLayoutDirection } from "./layout.types";
 
@@ -44,6 +44,10 @@ export class NgoLayoutComponent implements AfterViewInit {
     this.containers.forEach((item, index, array) => {
       if (index < array.length - 1) {
         const resizer = item.resizable(this.direction);
+        resizer.instance.didChangeStart.subscribe(() => {
+          item.updateSize();
+          array[index+1].updateSize();
+        });
         resizer.instance.didChangeFinish.subscribe(() => {
           item.updateSize();
           array[index+1].updateSize();

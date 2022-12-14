@@ -21,12 +21,14 @@ export class NgoLayoutResizerComponent {
   @Output() didChangeWidth = new EventEmitter<number>();
   @Output() didChangeHeight = new EventEmitter<number>();
   @Output() didChangeFinish = new EventEmitter<void>();
+  @Output() didChangeStart = new EventEmitter<void>();
 
   private clientX: number = 0;
   private clientY: number = 0;
 
   @HostListener('mousedown', ['$event'])
   mouseDown(event: MouseEvent) {
+    this.didChangeStart.emit();
     this.clientX = event.clientX;
     this.clientY = event.clientY;
 
