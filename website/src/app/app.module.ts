@@ -12,10 +12,6 @@ import { AppComponent } from './app.component';
     BrowserModule,
     RouterModule.forRoot([
       {
-        path: 'layout',
-        loadChildren: () =>import('./layout/layout.module').then(m => m.LayoutModule)
-      },
-      {
         path: 'split-layout',
         loadChildren: () => import('./split-layout/split-layout.module').then(m => m.SplitLayoutModule)
       },
