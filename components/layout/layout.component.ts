@@ -1,13 +1,16 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, ContentChildren, ElementRef, EventEmitter, HostBinding, Input, Output, QueryList, ViewChild, ViewContainerRef, ViewEncapsulation } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ComponentRef, ContentChildren, ElementRef, EventEmitter, HostBinding, Input, Output, QueryList, TemplateRef, ViewContainerRef, ViewEncapsulation } from "@angular/core";
 import { NgoLayoutResizerComponent } from "./layout-resizer.component";
 import { NgoLayoutDirection } from "./layout.types";
-
 
 @Component({
   selector: 'ngo-layout',
   exportAs: 'ngoLayout',
   template: `
-    <ng-content></ng-content>
+    <ngo-layout-header
+      *ngIf="direction === undefined"
+      [ngoTitle]="ngoTitle || 'Undefined'"
+    ></ngo-layout-header>
+    <ng-content style="display: none;"></ng-content>
   `,
   host: {
     class: 'ngo-layout',
@@ -20,6 +23,7 @@ import { NgoLayoutDirection } from "./layout.types";
 })
 export class NgoLayoutComponent implements AfterViewInit {
 
+  @Input() ngoTitle?: string;
   @Input() direction!: NgoLayoutDirection;
 
   @ContentChildren(NgoLayoutComponent)
@@ -27,6 +31,9 @@ export class NgoLayoutComponent implements AfterViewInit {
 
   @HostBinding('style.width') @Input() width: string = '100%';
   @HostBinding('style.height') @Input() height: string = '100%';
+
+  @HostBinding('style.userSelect') @Input() userSelect?: string = undefined;
+  @HostBinding('style.pointerEvents') @Input() pointerEvents?: string = undefined;
 
   private sizeWidth: number = 0;
   private sizeHeight: number = 0;
@@ -45,10 +52,18 @@ export class NgoLayoutComponent implements AfterViewInit {
       if (index < array.length - 1) {
         const resizer = item.resizable(this.direction);
         resizer.instance.didChangeStart.subscribe(() => {
+          item.userSelect = 'none';
+          item.pointerEvents = 'none';
+          array[index+1].userSelect = 'none';
+          array[index+1].pointerEvents = 'none';
           item.updateSize();
           array[index+1].updateSize();
         });
         resizer.instance.didChangeFinish.subscribe(() => {
+          item.userSelect = undefined;
+          item.pointerEvents = undefined;
+          array[index+1].userSelect = undefined;
+          array[index+1].pointerEvents = undefined;
           item.updateSize();
           array[index+1].updateSize();
         });

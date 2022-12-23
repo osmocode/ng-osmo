@@ -1,0 +1,47 @@
+
+$ngo-prefix: 'ngo';
+
+$ngo-split-layout-cls: '#{$ngo-prefix}-split';
+
+$layout-prefix-cls: '#{$ngo-split-layout-cls}-layout';
+$area-prefix-cls: '#{$ngo-split-layout-cls}-area';
+$resizer-prefix-cls: '#{$ngo-split-layout-cls}-resizer';
+
+.#{$layout-prefix-cls} {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  &-vertical {
+    flex-direction: column;
+  }
+
+  &-horizontal {
+    flex-direction: row;
+  }
+}
+
+.#{$area-prefix-cls} {
+  overflow: hidden;
+}
+
+.#{$resizer-prefix-cls} {
+  transition: background-color .1s ease-out;
+
+  &:hover {
+    background-color: #1890ff;
+    transition-delay: .2s;
+  }
+
+  &-vertical {
+    cursor: row-resize;
+    height: 100%;
+  }
+
+  &-horizontal {
+    cursor: col-resize;
+    width: 100%;
+  }
+
+}

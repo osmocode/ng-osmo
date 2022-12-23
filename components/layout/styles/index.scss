@@ -21,6 +21,8 @@ $layout-prefix-cls: '#{$ngo-prefix}-layout';
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     border: 1px solid #ececec;
+    flex-direction: column;
+    min-height: 42px;
   }
 
   &-resizer {
@@ -44,5 +46,14 @@ $layout-prefix-cls: '#{$ngo-prefix}-layout';
     }
   }
 
+  &-header {
+    //background-color: red;
+    padding: 0 14px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    border-bottom: 1px solid #ececec;
+  }
 
 }
