@@ -1,6 +1,14 @@
 {
   "name": "ng-osmo",
   "version": "0.0.1",
+  "description": "UI component based on Angular",
+  "author": {
+    "name": "osmocode"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/osmocode/ng-osmo"
+  },
   "peerDependencies": {
     "@angular/common": "^13.2.0",
     "@angular/core": "^13.2.0"
