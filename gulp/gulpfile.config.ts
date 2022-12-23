@@ -28,8 +28,8 @@ task('start:dev', done => {
   var initLib = false;
   watchLib(tsconfig, tsfolder, (value) => {
     if (initLib === false) {
-      parallel(['style:copy', 'style:compile'])(done);
-      watchScss()(done);
+      //parallel(['style:copy', 'style:compile'])(done);
+      //watchScss()(done);
       watchDoc()(done);
       initLib = true;
     }
